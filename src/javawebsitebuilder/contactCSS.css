@@ -1,0 +1,727 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-Dec-2018, 09:52:09
+    Author     : CubeRyzen
+*/
+
+#container{
+    box-sizing:border-box;
+    padding: 0 0 0 4%;
+    background-image: linear-gradient(to right bottom, #ececec, #c3c3c3);
+    display:block;
+    width:98%;
+    max-width:700px;
+    height:98%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate3d(-50%,-50%,0);
+    box-shadow:3px 3px 6px #999;
+    border-radius:10px;
+    transition: 1s opacity;
+}
+
+#mapDiv{
+    opacity:0;
+    z-index:-2;
+    transition:1s;
+}
+.font{
+    font-family: 'Quattrocento Sans', sans-serif;
+}
+h1{
+
+    font-size:50px;
+    color: #256;
+    text-shadow: 1px 1px 1px #efefef, -1px -1px 1px #006699;
+}
+#contactListContainer{
+    /*box-shadow:1px 1px 1px #fff,-1px -1px 1px #444;*/
+    display:block;
+    width:66%;
+    height:calc(100% - 150px);
+    /*    background-color:#bbb;*/
+    position:absolute;
+    top:106px;
+    left:4%;
+    overflow-y:scroll;
+    border:1px solid #888;
+    /*    border-right:2px solid #999;
+        border-bottom:2px solid #999;
+        border-top:2px solid #bbb;
+        border-left:2px solid #bbb;*/
+    box-sizing:border-box;
+}
+#innerListContainer{
+    /*box-shadow:1px 1px 3px #000 inset;*/
+    /*z-index:-1;*/
+    display:block;
+    width:100%;
+    background-color:#fff;
+    position:absolute;
+    top:0;
+    left:0;
+}
+#latestContainer{
+    display:block;
+    width:24%;
+    height:calc(100% - 524px);
+    background-color:#bbb;
+    position:absolute;
+    top:480px;
+    left:72%;
+    overflow-y:scroll;
+    border:1px solid #999;
+    box-sizing:border-box;
+    z-index: 5;
+}
+#innerLatestContainer{
+    display:block;
+    width:100%;
+    background-color:#fff;
+    position:absolute;
+    top:0;
+    left:0;
+}
+#buttonsContainer{
+    display:block;
+    width:24%;
+    height:calc(70% - 60px);
+    position:absolute;
+    top:42px;
+    left:72%;
+    box-sizing:border-box;
+}
+#contentCont{
+    margin-left:20px;
+    margin-top:45px;
+    border:2px solid #777; 
+    width:400px;
+    height:calc(100% - 500px);
+    opacity:0;
+    transition: 0.6s;
+    background-color: #eee;
+}
+
+#countrySearch {
+    position: absolute;
+    top:0;
+    left:calc(-100% - 35px);
+    width: 140px;
+    height:36px;
+    font-size: 20px;
+    border: 1px solid #aaa;
+    margin-bottom: 12px; 
+    text-shadow:0 0 1px #999;
+    font-family: 'Quattrocento Sans', sans-serif;
+    color:#555;
+    border-radius: 2px;
+}
+
+#nameSearch {
+    position:relative;
+    left:20px;
+    color:#555;
+    width: 140px;
+    height:36px;
+    font-size: 20px;
+    border: 1px solid #aaa;
+    margin-bottom: 30px; 
+    text-shadow:0 0 1px #999;
+    font-family: 'Quattrocento Sans', sans-serif;
+    border-radius: 2px;
+}
+.listFlags {
+    position:relative;
+    display:block;
+    border-bottom:2px solid #777;
+    /*border-right:2px solid #777;*/
+    height:45px;
+    text-decoration:none;
+    color:#333;
+    /*transition:0.2s;*/
+    background-color: rgba(250,250,250,0.4);
+    text-shadow:0 0 1px #999;
+    /*z-index:2;*/
+}
+.listFlags:hover {
+    background-color:#eee;
+
+}
+.IFlags{
+    display:inline;
+    height:40px;
+    margin-top: -4px;
+}
+.nameDivs{
+    position:absolute;
+    left:48px;
+    top:8px;
+    font-size:21px;
+    color:#222;
+    text-decoration: none;
+    border: 1px solid #eee;
+    z-index:4;
+    box-shadow: 1px 1px 3px #ccc;
+    background-color:#fefefe;
+    padding:3px 4px 1px 4px;
+    border-radius:3px;
+    transition: 0.2s;
+}
+.nameDivs:hover{
+
+    box-shadow: 2px 2px 6px #444;
+}
+#flagImg{
+    position:absolute;
+    right:15px;
+    top:40px;
+    transition: 0.9s;
+    opacity:0;
+}
+#nameTitle{
+    position:absolute;
+    left:40px;
+    top:288px;
+    font-size:50px;
+    color: #114444;
+    text-shadow: 1px 1px 1px #bbb, -1px -1px 1px #006699;
+}
+.tGradient{
+    position:absolute;
+    bottom:10px;
+    left:0;
+    background: linear-gradient(45deg, #f5f5f5 0%,#28343b00 80%,#28343b00 100%);
+    width:100%;
+    height:90px;
+}
+.backLink{
+    position:absolute;
+    left:22px;
+    top:22px;
+
+    color:#999;
+    padding:4px;
+    border-radius:5px;
+    border:2px solid #bbb;
+    cursor:pointer;
+    transition: 0.5s;
+    z-index: 4;
+}
+.backLink:hover{
+    box-shadow: 3px 3px 6px #555;
+    border-color:#555;
+    color:#444;
+}
+
+#contactHeader{
+    position:absolute;
+    left:4%;
+    top:-3px;
+}
+.catIconDetails{
+    position:absolute;
+    top:-5px;
+    left:-30px;
+    width:30px;
+    opacity:0.5;
+}
+.categoryButtons{
+    width:100%;
+    height:40px;
+    position:relative;
+    cursor:pointer;
+    transition: 0.2s;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+.categoryButtons:hover{
+    background-color:#ddd;
+}
+.categoryButtonView{
+    width:100%;
+    height:40px;
+    position:relative;
+    /*cursor:pointer;*/
+    transition: 0.2s;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+.categoryData{
+    font-size:23px;
+    font-weight:900;
+    position:absolute;
+    top:7px;
+    right:-14px;
+    width:60px;
+    transition: 1s;
+    color: #256;
+    text-shadow: 1px 1px 1px #efefef, -1px -1px 1px #006699;
+}
+.categoryLabel{
+    position:absolute;
+    top:12px;
+    left:40px;
+    width:60px;
+    text-shadow:0 0 1px #777;
+}
+.categoryViewing{
+    position:absolute;
+    top:12px;
+    left:20px;
+    width:60px;
+    text-shadow:0 0 1px #777;
+}
+.categoryDataAll{
+    font-size:34px;
+    font-weight:900;
+    position:absolute;
+    top:58%;
+    left:50%;
+    transform:translate3d(-50%,-50%,0);
+    width:auto;
+    transition: 1s;
+    color: #256;
+    text-shadow: 3px 3px 6px #bbb, -1px -1px 1px #006699;
+}
+.categoryLabelAll{
+    position:absolute;
+    top:32%;
+    left:50%;
+    transform:translate(-50%,-40%);
+    width:auto;
+    text-shadow:0 0 1px #777;
+}
+.totalAll{
+    text-shadow:0 0 1px #777;
+    position:absolute;
+    top:90%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:auto;
+    opacity:0.2;
+    display:none;
+}
+input{
+    padding:7px 5px 2px 6px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 3px #bbb inset;
+    border: 1px solid #aaa;
+}
+.clearButtons{
+    position:absolute;
+    text-shadow:0px 0px 1px #aaa;
+    left:-50px;
+    border:1px solid #aaa;
+    width:45px;
+    height:18px;
+    box-sizing: border-box;
+    border-radius:2px;
+    color:#aaa;
+    padding:1px 2px 0px 4px;
+    box-shadow: 1px 1px 3px #bbb inset;
+    background-color: #fefefe;
+    cursor: pointer;
+    font-size:14px;
+}
+.clearCountry{
+    top:0px;
+    left:calc(-100% - 85px);
+}
+.clearName{
+    top:0px;
+    left:-28px;
+}
+.map{
+    top:18px;
+    left:-253px;
+}
+.clearCountry:hover {
+    background-color: #eee;
+    box-shadow: 1px 1px 1px #fff inset,1px 1px 3px #bbb;
+    color:#777;
+}
+.clearName:hover {
+    background-color: #eee;
+    box-shadow: 1px 1px 1px #fff inset,1px 1px 3px #bbb;
+    color:#777;
+}
+.clearCountry:active {
+    background-color: #ddd;
+    box-shadow: 1px 1px 1px #fff ,1px 1px 3px #bbb inset;
+}
+.clearName:active {
+    background-color: #ddd;
+    box-shadow: 1px 1px 1px #fff ,1px 1px 3px #bbb inset;
+}
+.countryTag:hover{
+    z-index:4;
+    border:1px solid #aaa;
+
+    border-radius:4px;
+    box-shadow: 1px 1px 1px #fff ,1px 1px 3px #bbb inset;
+    background-color: #fff;
+}
+.bgImg{
+    margin-top:70px;
+    /*border:3px solid #bbb;*/
+    width:100%;
+    height:326px;
+    object-fit: cover;
+
+    box-sizing:border-box;
+    transition: 1s;
+    opacity:0;
+}
+.bgImgFadeIn{
+    opacity:1;
+}
+#flagCountry{
+    font-size:20px;
+    color:#555;
+    padding:6px 4px 4px 6px;
+    border-radius:3px;
+    border:2px solid #999;
+    position:absolute;
+    top:100px;
+    right:16px;
+    background-color:rgba(250,250,250,0.5);
+    transition:0.9s;
+    opacity:0;
+}
+.details{
+
+    margin-left:30px;
+    font-size:20px;
+    color: #263030;
+    /*text-shadow: 3px 3px 6px #bbb, -1px -1px 1px #006699;*/
+}
+.dEmail{
+    position:absolute;
+    top:385px;
+    right:30px;
+    opacity:0;
+    transition:1s;
+}
+.dCat{
+    position:absolute;
+    top:410px;
+    left:20px;
+    opacity:0;
+    transition:1s;
+}
+.dID{
+    position:absolute;
+    top:5px;
+    right:20px;
+    font-size:12px;
+    color:#848484;
+}
+#findresult{
+    display:none;
+    margin-top:15px;
+    margin-bottom:10px;
+}
+#innerInfo{
+    /*    position:absolute;
+        left:3px;
+        top:33px;*/
+    opacity:1;
+    transition:1s;
+    font-size:15px;
+}
+#info{
+    margin-top:2px;
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:20px;
+
+}
+.infoContainer{
+    position:relative;
+    width:45px;
+    height:25px;
+    box-sizing:border-box;
+    border:2px solid #999;
+    border-radius:4px;
+    transition:0.4s;
+    overflow:hidden;
+    color:#999;
+    padding-left:4px;
+    font-size:15px;
+}
+.infoWidthChange{
+    padding-left:14px;
+    width:360px;
+    background-color:#eee;
+
+    z-index:5;
+    opacity:1;
+    color:#999;
+}
+.infoHeightChange{
+    padding:14px;
+    height:120px;
+    color:#000;
+}
+#info:hover {
+    border-color:#333;
+    color:#000;
+    box-shadow: 3px 3px 6px #555;
+}
+#close{
+    position:absolute;
+    top:5px;
+    right:5px;
+    opacity:0;
+    transition: 1s;
+    font-size:14px;
+    cursor:pointer;
+}
+#close:hover{
+    /*    cursor:pointer;*/
+}
+#innerInfoItem1,#innerInfoItem2,#innerInfoItem3{
+    font-size:14px;
+}
+.catIcons{
+    position:absolute;
+    left:6px;
+    top:11px;
+    width:24px;
+    padding-right:5px;
+}
+.catIconAll{
+    border-right:3px solid #222;
+}
+.catIconClub{
+    border-right:7px solid #444;
+}
+.catIconBusiness{
+    border-right:7px solid #cc9900;
+}
+.catIconPrivate{
+    border-right:7px solid #357;
+}
+.catButtonIcons{
+    position:absolute;
+    left:5px;
+    top:10px;
+    width:20px;
+    padding-right:4px;
+}
+#selectCat1{
+    z-index:4;
+    text-align:center;
+    box-shadow:1px 1px 2px #fff,-1px -1px 2px #222,2px 2px 4px #999 inset,5px 5px 12px #ccc inset;
+    border:1px solid #bbb;
+    box-sizing:border-box;
+    width:140px;
+    height:140px;
+    background-color:#eee;
+    position:relative;
+    top:-174px;
+    left:15px;
+    border-radius:50%;
+    margin-top:15px;
+    cursor:pointer;
+}
+#selectCat1:hover{
+    background-color:#ddd;
+}
+#selectCat1:hover .totalAll{
+    opacity:1;
+}
+#pieRing{
+    box-shadow:5px 5px 12px #ddd,-1px -1px 2px #222 inset,2px 2px 4px #999,1px 1px 2px #fff inset;
+    border:2px solid #bbb;
+    box-sizing:border-box;
+    width:162px;
+    height:162px;
+    position:relative;
+    top:-340px;
+    left:5px;
+    border-radius:50%;
+    margin-top:15px;
+    padding:1px;
+}
+html, body{
+
+    padding:0;
+    margin:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+body{
+    /*background-color: #bbb;*/
+    background: radial-gradient(circle, rgba(142,159,172,0.3701681356136205) 0%, rgba(59, 73, 90, 0.61) 100%);
+}
+.bannerCont{
+    position:relative;
+    height:400px;
+}
+
+#adminContentTitle{
+    margin-left:10px;
+    margin-top:10px;
+    font-size:24px;
+    background-color:#eee;
+    
+}
+#adminContent{
+    margin-left:10px;
+    margin-top:10px;
+}
+
+
+
+
+
+/*-open box circle NightRider -*/
+/*<div class="scannerCont">
+  <div class="nightRider1"></div>
+  <div class="nightRider2"></div>
+  <div class="nightRider3"></div>
+  <div class="nightRider4"></div>
+</div>*/
+
+
+
+
+.scannerCont {
+    /*display: block;*/
+    position: absolute;
+    top:250px;
+    left:43px;
+
+    width: 210px;
+    height: 40px;
+    margin:0 auto;
+    transition: 1s;
+    opacity:0.8;
+}
+
+.nightRider1, .nightRider2, .nightRider3, .nightRider4 {
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 3px rgba(0,0,0,1);
+    box-sizing: border-box;
+    will-change: transform;
+    border: 1px solid black;
+}
+
+@-webkit-keyframes scan {
+    0% {
+        -webkit-transform: translateX(0px);
+    }
+    50% {
+        -webkit-transform: translateX(200px);
+    }
+}
+
+@-moz-keyframes scan {
+    0% {
+        -moz-transform: translateX(0px);
+    }
+    50% {
+        -moz-transform: translateX(200px);
+    }
+}
+
+@-o-keyframes scan {
+    0% {
+        -o-transform: translateX(0px);
+    }
+    50% {
+        -o-transform: translateX(200px);
+    }
+}
+
+@-ms-keyframes scan {
+    0% {
+        -ms-transform: translateX(0px);
+    }
+    50% {
+        -ms-transform: translateX(200px);
+    }
+}
+
+@keyframes scan {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(200px);
+    }
+}
+
+
+
+.nightRider1 {
+    top: 28px;
+    width: 4px;
+    height: 4px;
+    background: #111;
+    -webkit-animation: scan 3.5s infinite;
+    -moz-animation: scan 3.5s infinite;
+    -o-animation: scan 3.5s infinite;
+    -ms-transition: scan 3.5s infinite;
+    animation: scan 3.5s infinite;
+    /*animation-direction: alternate;*/
+    /*animation-timing-function: ease-in;*/
+    animation-delay: 0.24s;
+    animation-timing-function: ease-in-out;
+}
+
+.nightRider2 {
+    top: 26px;
+    width: 8px;
+    height: 8px;
+    background: #555;
+    -webkit-animation: scan 3.5s infinite;
+    -moz-animation: scan 3.5s infinite;
+    -o-animation: scan 3.5s infinite;
+    -ms-transition: scan 3.5s infinite;
+    animation: scan 3.5s infinite;
+    /*animation-direction: alternate;*/
+    /*animation-timing-function: ease-in;*/
+    animation-delay: 0.16s;
+    animation-timing-function: ease-in-out;
+}
+
+.nightRider3 {
+    top: 24px;
+    width: 12px;
+    height: 12px;
+    background: #aaa;
+    -webkit-animation: scan 3.5s infinite;
+    -moz-animation: scan 3.5s infinite;
+    -o-animation: scan 3.5s infinite;
+    -ms-transition: scan 3.5s infinite;
+    animation: scan 3.5s infinite;
+    /*animation-direction: alternate;*/
+    animation-delay: 0.08s;
+    animation-timing-function: ease-in-out;
+}
+
+.nightRider4 {
+    top: 22px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    -webkit-animation: scan 3.5s infinite;
+    -moz-animation: scan 3.5s infinite;
+    -o-animation: scan 3.5s infinite;
+    -ms-transition: scan 3.5s infinite;
+    animation: scan 3.5s infinite;
+    /*animation-direction: alternate;*/
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+}

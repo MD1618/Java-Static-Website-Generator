@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset='utf-8' name='viewport' content='width=device-width'>
+	<link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans:700" rel="stylesheet">
+	<style>
+		#container{box-sizing:border-box;padding: 0 0 0 30px;background-color:#ededed;display:block;width:98%;max-width:700px;height:98%;position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0);box-shadow:3px 3px 6px #bbb;border-radius:10px;}
+				.font{font-family: 'Quattrocento Sans', sans-serif;}
+				h1{font-size:50px;color: #33aaaa;text-shadow: 3px 3px 6px #bbb, -1px -1px 1px #006699;}
+				h4{font-size:25px;color: #007777;text-shadow: 3px 3px 6px #bbb, -1px -1px 1px #006699;}
+				#contactListContainer{display:block;width:90%;height:calc(100% - 240px);background-color:#bbb;position:absolute;top:230px;left:5%;overflow-y:scroll;}
+				#innerListContainer{display:block;width:100%;;background-color:#fff;position:absolute;top:0;left:0;}
+			</style>
+</head>
+
+<body class='font'>
+	<div id='container'>
+		<img src="https://www.countryflags.io/be/flat/64.png">
+	</div>
+</body>
+<script type="text/javascript">
+function getCountries(){	var xmlhttp = new XMLHttpRequest();	var url = "https://datahub.io/core/country-list/datapackage.json";	xmlhttp.onreadystatechange = function() {		if (this.readyState == 4 && this.status == 200) {			var myArr = JSON.parse(this.responseText);console.log(myArr);}};	xmlhttp.open("GET", url, true);	xmlhttp.send();}getCountries();
+</script>
+
+</html>
